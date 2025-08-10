@@ -45,12 +45,16 @@
 
 .payment-summary {
   padding-bottom: 5px;
+  position: sticky;
+  top: 60px;
 }
 
 @media (max-width: 1000px) {
   .payment-summary {
     grid-row: 1;
     margin-bottom: 12px;
+    position: static;
+    top: auto;
   }
 }
 
