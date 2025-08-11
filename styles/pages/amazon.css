@@ -132,3 +132,30 @@
   padding: 8px;
   border-radius: 50px;
 }
+
+.product-quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.js-quantity-selector {
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.in-cart-qty {
+    font-size: 14px;
+    color: #007600;
+    font-weight: bold;
+    background-color: #bdc3c7;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #ecf0f1;
+}
+.in-cart-qty:empty {
+    display: none;
+}

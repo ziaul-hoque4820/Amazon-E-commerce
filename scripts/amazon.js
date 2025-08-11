@@ -5,6 +5,9 @@ import { formatCurrency } from "./utils/money.js";
 let productsHTML = "";
 
 products.forEach((product) => {
+    const existingCartItem = cart.find(cartItem => cartItem.productId === product.id);
+    const inCartQty = existingCartItem ? existingCartItem.quantity : 0;
+
     productsHTML += `
             <div class="product-container">
                 <div class="product-image-container">
@@ -27,18 +30,13 @@ products.forEach((product) => {
                 </div>
 
                 <div class="product-quantity-container">
-                    <select>
-                        <option selected value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
+                    <select class="js-quantity-selector" data-product-id="${product.id}">
+                        ${quantitySelector()}
                     </select>
+
+                    <div class="js-in-cart-qty in-cart-qty" style="${inCartQty > 0 ? '' : 'display:none;'}">
+                        ${inCartQty > 0 ? `In cart: ${inCartQty}` : ""}
+                    </div>
                 </div>
 
                 <div class="product-spacer"></div>
@@ -65,11 +63,41 @@ function updateCartQuantity() {
     document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 };
 
+function quantitySelector() {
+    let optionsHTML = '';
+
+    for (let v = 1; v <= 10; v++) {
+        let selected = v === 1 ? 'selected' : '';
+        optionsHTML += `<option value="${v}" ${selected}>${v}</option>`;
+    }
+
+    return optionsHTML;
+}
+
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     button.addEventListener('click', () => {
         const productId = button.dataset.productId;
         const productContainer = button.closest('.product-container');
-        addToCart(productId);
+
+        const quantitySelector = productContainer.querySelector('.js-quantity-selector');
+        const selectedQuantity = parseInt(quantitySelector.value, 10) || 1;
+
+        addToCart(productId, selectedQuantity);
+
+        // UI update in-cart level
+        const inCartLabel = productContainer.querySelector('.js-in-cart-qty');
+        const newQty = cart.find(cartItem => cartItem.productId === productId)?.quantity || 0;
+
+        if (newQty > 0) {
+            inCartLabel.textContent = `In cart: ${newQty}`;
+            inCartLabel.style.display = 'block';
+        } else {
+            inCartLabel.style.display = 'none';
+        }
+
+        // reset Selector, default value 1
+        if (quantitySelector) quantitySelector.value = '1';
+
         updateCartQuantity();
         showAddedMessage(productContainer);
     });
