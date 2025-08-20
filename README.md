@@ -6,7 +6,7 @@ A lightweight, learning‑focused e‑commerce prototype inspired by Amazon. Bui
 
 ## 🔗 Live Demo
 
-- 🌐 **Live Demo:** [] ()
+- 🌐 **Live Demo:** [https://ziaul-hoque4820.github.io/Amazon-E-commerce/] (https://ziaul-hoque4820.github.io/Amazon-E-commerce/)
 
 > Tip: You can deploy easily to **Netlify**, **Vercel**, or **GitHub Pages**. See the [Deployment](#-deployment) section.
 
