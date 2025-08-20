@@ -130,7 +130,7 @@ export function renderOrderSummary() {
             parent.innerHTML = `
                 <span>
                     Quantity: 
-                    <input type="number" class="quantity-input" min="1" value="${currentQty}">
+                    <input style="width: 40px; type="number" class="quantity-input" min="1" value="${currentQty}">
                 </span>
                 <button class="save-quantity-button">Save</button>
             `;
