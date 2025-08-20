@@ -15,12 +15,11 @@ if (!cart) {
     ];
 }
 
-function saveToStorage() {
+export function saveToStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export function addToCart(productId, quantity = 1) {
-    quantity = parseInt(quantity, 10) || 1;
+export function addToCart(productId, quantity) {
 
     let matchingProduct;
 
