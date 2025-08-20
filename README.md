@@ -2,10 +2,6 @@
 
 A lightweight, learning‑focused e‑commerce prototype inspired by Amazon. Built with **HTML**, **CSS**, and **Vanilla JavaScript** to deepen core JS skills (state management, DOM rendering, modular code). The app supports a realistic cart and checkout flow, dynamic shipping options, and a responsive UI.
 
-<p align="center">
-  <img src="./screenshots/hero.png" alt="Amazon Project – Hero" width="720" />
-</p>
-
 ---
 
 ## 🔗 Live Demo
